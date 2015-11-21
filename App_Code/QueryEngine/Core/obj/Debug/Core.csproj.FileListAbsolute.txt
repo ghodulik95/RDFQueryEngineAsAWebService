@@ -1,0 +1,61 @@
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\NClass.Core.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\NClass.Core.pdb
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\NClass.Translations.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\NClass.Translations.pdb
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\de\NClass.Translations.resources.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\es\NClass.Translations.resources.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\hu\NClass.Translations.resources.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\pt-BR\NClass.Translations.resources.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\ru\NClass.Translations.resources.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\bin\Debug\zh-CN\NClass.Translations.resources.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\obj\Debug\NClass.Core.dll
+C:\Users\Alex\Documents\Visual Studio 2013\Projects\GBE_src\src\Core\obj\Debug\NClass.Core.pdb
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Core.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Core.pdb
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Translations.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Translations.pdb
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\de\GBE.Translations.resources.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\es\GBE.Translations.resources.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\hu\GBE.Translations.resources.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\pt-BR\GBE.Translations.resources.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\ru\GBE.Translations.resources.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\zh-CN\GBE.Translations.resources.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\obj\Debug\GBE.Core.dll
+C:\Users\shi\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\obj\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Core.dll
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Translations.dll
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\bin\Debug\GBE.Translations.pdb
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\obj\Debug\GBE.Core.dll
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\GBE_src\src\Core\obj\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\bin\Debug\GBE.Core.dll
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\bin\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\obj\Debug\GBE.Core.dll
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\obj\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\gbe-demo\src\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\gbe-demo\src\Core\obj\Debug\GBE.Core.dll
+C:\Users\Alex\Documents\gbe-demo\src\Core\obj\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\gbe-demo\src\Core\bin\Debug\GBE.Core.dll
+C:\Users\Alex\Documents\gbe-demo\src\Core\bin\Debug\GBE.Core.pdb
+C:\Users\Alex\Documents\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.dll
+C:\Users\Alex\Documents\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.pdb
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.dll
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.pdb
+C:\Users\Alex\Documents\Bit Bucket\gbe-demo\src\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\GBE files\gbe-demo\src\Core\bin\Debug\GBE.Core.dll
+D:\GBE files\gbe-demo\src\Core\bin\Debug\GBE.Core.pdb
+D:\GBE files\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.dll
+D:\GBE files\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.pdb
+D:\GBE files\gbe-demo\src\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\GBE files\gbe-demo\src\Core\obj\Debug\GBE.Core.dll
+D:\GBE files\gbe-demo\src\Core\obj\Debug\GBE.Core.pdb
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\bin\Debug\GBE.Core.dll
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\bin\Debug\GBE.Core.pdb
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.dll
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\bin\Debug\GBE.QueryEngine.pdb
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\obj\Debug\GBE.Core.dll
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\Core\obj\Debug\GBE.Core.pdb

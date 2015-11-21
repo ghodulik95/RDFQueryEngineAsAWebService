@@ -1,0 +1,15 @@
+C:\Users\Alex\Documents\gbe-demo\src\QueryEngine\bin\Debug\GBE.QueryEngine.dll
+C:\Users\Alex\Documents\gbe-demo\src\QueryEngine\bin\Debug\GBE.QueryEngine.pdb
+C:\Users\Alex\Documents\gbe-demo\src\QueryEngine\obj\x86\Debug\GBE.QueryEngine.dll
+C:\Users\Alex\Documents\gbe-demo\src\QueryEngine\obj\x86\Debug\GBE.QueryEngine.pdb
+C:\Users\Alex\Documents\gbe-demo\src\QueryEngine\obj\x86\Debug\QueryEngine.csprojResolveAssemblyReference.cache
+D:\GBE files\gbe-demo\src\QueryEngine\obj\x86\Debug\QueryEngine.csprojResolveAssemblyReference.cache
+D:\GBE files\gbe-demo\src\QueryEngine\obj\x86\Debug\GBE.QueryEngine.dll
+D:\GBE files\gbe-demo\src\QueryEngine\obj\x86\Debug\GBE.QueryEngine.pdb
+D:\GBE files\gbe-demo\src\QueryEngine\bin\Debug\GBE.QueryEngine.dll
+D:\GBE files\gbe-demo\src\QueryEngine\bin\Debug\GBE.QueryEngine.pdb
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\QueryEngine\obj\x86\Debug\QueryEngine.csprojResolveAssemblyReference.cache
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\QueryEngine\obj\x86\Debug\GBE.QueryEngine.dll
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\QueryEngine\obj\x86\Debug\GBE.QueryEngine.pdb
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\QueryEngine\bin\Debug\GBE.QueryEngine.dll
+C:\Users\Lab\Desktop\GBE files\gbe-demo\src\QueryEngine\bin\Debug\GBE.QueryEngine.pdb
