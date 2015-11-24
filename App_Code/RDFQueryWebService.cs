@@ -162,101 +162,18 @@ public class RDFQueryWebService : System.Web.Services.WebService
     }
 
 
-    /*
-    /// <summary>
-    /// This function deal with the query results we get from Shi Qiao's program. It count the result and update the status bar. Also it display the first result
-    /// in the IDLabel table and create a new Template to display the result.
-    /// </summary>
-    /// <param name="results"></param>
-    private void DealWithResults(List<Dictionary<int, string>> results)
-    {
-        //resultSet = results;
-        resultPosition = 0;//initialize;
-        Model activeTemplate = (Model)docManager.ActiveDocument;
-        int count = results.Count;//result count;
-                                  //We show the number of the result count, and only display one by one. Maybe only keep the first 20 results.
-        lblStatus.Text = String.Format("Query:   " + activeTemplate.Name + " Query Time: " + querytime + " ms    Result Count:  " + count);
-        //IDLabel.DataSource = null;
-        //IDLabel.DataSource = new BindingSource(results[0], null);//display the first result in the table.
-        Model newModel = activeTemplate.Clone();
-        newModel.Name = String.Format(newModel.Name + "  result");
-        if (results.Count == 0)
-        {
-            newModel.Name = String.Format(newModel.Name + ": empty");//no result.
-        }
-        Template newTemplate = (Template)newModel;
-
-        //we need to disable some tools when displaying. Tools like query and loadDatabase and some others will be disabled.
-        // UpdateTemplate(results[0]);
-
-        DisplayResults(newTemplate, displayNum);
-
-
-        docManager.AddOrActivate(newTemplate);
-        //UpdateTemplate(results,0);
-        //DisableTools();
-        if (count > displayNum)
-        {
-            toolNext.Enabled = true;
-        }
-    }
-
-    //important assumption here: it assumes the newTemplate has one set of result graph.
-    private void DisplayResults(Template newTemplate, int num)
-    {
-        if (resultSet.Count == 1) return;
-
-        if (resultSet.Count == 0)
-        {
-            int eCount = newTemplate.ShapeCount;
-            while (eCount > 0)
-            {
-                newTemplate.RemoveLastEntity();
-                eCount--;
-            }
-            return;//no results. so just create an empty result file.
-        }
-        int elCount = newTemplate.ShapeCount;
-        newTemplate.RedrawSuspended = true;
-        newTemplate.SelectAll();
-        newTemplate.SelectedFrame = newTemplate.SelectedRectangle();
-        //add new results.
-        //here select all the current vertices and edges. Currently can only do this which will result in 2^x results display.
-        //results paste has a fixed offset of 400, which need to changed to accomodate the graph template.
-        //May do select only the first vertices and edges and calcualte offset based on this and the num and paste to display a new result.
-        newTemplate.Copy();
-        newTemplate.HorizontalPaste();
-        newTemplate.SelectAll();
-        newTemplate.Copy();
-        for (int i = 1; i < num / 2 && i < (resultSet.Count + 1) / 2; i++)
-        {
-            newTemplate.VerticalPaste();
-            newTemplate.Copy();
-        }
-        if (resultSet.Count < num && resultSet.Count % 2 == 1)
-        {
-            while (elCount > 0)
-            {
-                newTemplate.RemoveLastEntity();
-                elCount--;
-            }
-        }
-        newTemplate.DeselectAll();
-        GBE.TemplateDesigner.Clipboard.Clear();
-        newTemplate.RedrawSuspended = false;
-        newTemplate.Redraw();
-    }
-    */
-
     [WebMethod]
-    public string testQuery()
+    public string testQuery(string q)
     {
         Dictionary<int, string> vertexLabel = new Dictionary<int, string>();
-        vertexLabel[0] = "<http://www.Department2.University1.edu/GraduateStudent*";
-        vertexLabel[1] = "<http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent>";
+        vertexLabel[3] = "<http://www.Department2.University1.edu/GraduateStudent*";
+        vertexLabel[5] = "<http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent>";
+       //vertexLabel[2] = "<http://www.Department2.University1.edu/FullProfessor0/Publication*";
         List<GBE.Core.EdgeID> edgeLabel = new List<GBE.Core.EdgeID>();
-        var edge = new GBE.Core.EdgeID(0, 1, "#type");
+        var edge = new GBE.Core.EdgeID(3, 5, "#type");
         edgeLabel.Add(edge);
+       // edge = new GBE.Core.EdgeID(2, 0, "#publicationAuthor");
+       // edgeLabel.Add(edge);
 
         var res = RunQuery(vertexLabel, edgeLabel);
         string toReturn = "";
@@ -269,6 +186,67 @@ public class RDFQueryWebService : System.Web.Services.WebService
             toReturn += " -- ";
         }
         return toReturn;
+    }
+
+    [WebMethod]
+    //{ nodes: [{ id: 0, label: '<http://www.Department2.University1.edu/GraduateStudent*' },{ id: 1, label: '<http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent>' }], edges: [{ source: 0, target: 1, label: 'edge0' }] }
+    public string callRunQuery(string queryAsJSON, string dbname)
+    {
+        Dictionary<int, string> vertexLabel = new Dictionary<int, string>();
+        List<GBE.Core.EdgeID> edgeLabel = new List<GBE.Core.EdgeID>();
+        try {
+            dynamic query = JsonConvert.DeserializeObject(queryAsJSON);
+            foreach (dynamic node in query.nodes)
+            {
+                vertexLabel.Add((int)node.id, (string)node.label);
+            }
+
+            foreach (dynamic edge in query.edges)
+            {
+                edgeLabel.Add(new GBE.Core.EdgeID((int)edge.source, (int)edge.target, (string)edge.label));
+            }
+        } catch (JsonSerializationException e)
+        {
+            return e.ToString();
+        }
+        catch (Exception e)
+        {
+            return e.ToString();
+        }
+
+        return resultsToJSON(RunQuery(vertexLabel, edgeLabel));
+    }
+
+    private string resultsToJSON(List<Dictionary<int, string>> res)
+    {
+        var toReturn = new StringBuilder("{ results:[");
+        Boolean isFirstResult = true;
+        foreach (var r in res)
+        {
+            if (!isFirstResult)
+            {
+                toReturn.Append("],");
+            }
+            toReturn.Append("[");
+            Boolean isFirstVal = true;
+            foreach (KeyValuePair<int, string> kv in r)
+            {
+                if (!isFirstVal)
+                {
+                    toReturn.Append(",");
+                }
+                toReturn.Append("{ id: ");
+                toReturn.Append(kv.Key);
+                toReturn.Append(", value: ");
+                toReturn.Append(kv.Value);
+                toReturn.Append("}");
+                isFirstVal = false;
+            }
+            isFirstResult = false;
+
+        }
+        toReturn.Append("]}");
+        return toReturn.ToString();
     }
 
     //The following two functions are written by Shi Qiao on loading the database to memory and run the query.
