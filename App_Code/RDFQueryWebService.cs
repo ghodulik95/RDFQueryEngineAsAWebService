@@ -219,15 +219,15 @@ public class RDFQueryWebService : System.Web.Services.WebService
 
     private string resultsToJSON(List<Dictionary<int, string>> res)
     {
-        var toReturn = new StringBuilder("{ results:[");
+        var toReturn = new StringBuilder("{ \"results\":[");
         Boolean isFirstResult = true;
         foreach (var r in res)
         {
             if (!isFirstResult)
             {
-                toReturn.Append("],");
+                toReturn.Append("},");
             }
-            toReturn.Append("[");
+            toReturn.Append("{");
             Boolean isFirstVal = true;
             foreach (KeyValuePair<int, string> kv in r)
             {
@@ -235,17 +235,17 @@ public class RDFQueryWebService : System.Web.Services.WebService
                 {
                     toReturn.Append(",");
                 }
-                toReturn.Append("{ id: ");
+                toReturn.Append("\"value");
                 toReturn.Append(kv.Key);
-                toReturn.Append(", value: ");
+                toReturn.Append("\": \"");
                 toReturn.Append(kv.Value);
-                toReturn.Append("}");
+                toReturn.Append("\"");
                 isFirstVal = false;
             }
             isFirstResult = false;
 
         }
-        toReturn.Append("]}");
+        toReturn.Append("}]}");
         return toReturn.ToString();
     }
 
