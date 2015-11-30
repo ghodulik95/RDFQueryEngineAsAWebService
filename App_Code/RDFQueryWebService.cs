@@ -235,7 +235,7 @@ public class RDFQueryWebService : System.Web.Services.WebService
                 {
                     toReturn.Append(",");
                 }
-                toReturn.Append("\"value");
+                toReturn.Append("\"");
                 toReturn.Append(kv.Key);
                 toReturn.Append("\": \"");
                 toReturn.Append(kv.Value);
