@@ -230,7 +230,7 @@ public class RDFQueryWebService : System.Web.Services.WebService
             return e.ToString();
         }
 
-        return resultsToJSON(RunQuery(vertexLabel, edgeLabel));
+        return resultsToJSON(RunQuery(vertexLabel, edgeLabel, dbname));
     }
 
     private string resultsToJSON(List<Dictionary<int, string>> res)
@@ -266,10 +266,10 @@ public class RDFQueryWebService : System.Web.Services.WebService
     }
 
     //The following two functions are written by Shi Qiao on loading the database to memory and run the query.
-    private List<Dictionary<int, string>> RunQuery(Dictionary<int, string> vertexLabel, List<GBE.Core.EdgeID> edgeLabel)
+    private List<Dictionary<int, string>> RunQuery(Dictionary<int, string> vertexLabel, List<GBE.Core.EdgeID> edgeLabel, string dbname)
     {
         //run query function.
-        loadDatabase(1);
+        loadDatabase(dbname);
         DataTable queryGraph = new DataTable();
         queryGraph.Columns.Add("ID1", typeof(int));
         queryGraph.Columns.Add("Node1", typeof(string));
@@ -312,41 +312,29 @@ public class RDFQueryWebService : System.Web.Services.WebService
 
 
 
-    private void loadDatabase(int ID)
+    private void loadDatabase(string dbname)
     {
 
-        string connectionString;
-        switch (ID)
-        {
-            /*case 1:
-                connectionString = "server=localhost;database=LUBM;Trusted_Connection=True;Connect Timeout=500";
-                break;
-            case 2:
-                connectionString = "server=localhost;database=uniprotTest;Trusted_Connection=True;Connect Timeout=500";
-                break;
-            */
-            default:
-                connectionString = "server=.\\SQLEXPRESS;" +
+        string connectionString = "server=.\\SQLEXPRESS;" +
                                        "Trusted_Connection=yes;" +
-                                       "database=LUBM; " +
+                                       "database="+dbname+"; " +
                                        "connection timeout=30;" +
                                        "Integrated Security = SSPI;";
-                break;
-        }
+                
         DataHelpe.Constr = connectionString;
         string sql = "select * from IDlist order by px asc";
         DataTable IDlist = DataHelpe.GetDataTable(sql);
         List<DataTable> database = new List<DataTable>();
         VertexIDLabel.database = IDlist;
         Dictionary<int, List<NBEntry>> NBindex;
-        switch (ID)
+        switch (dbname)
         {
-            /*case 1:
-                NBindex = IndexInMemory.loadNBIndex("N3B");
+            case "LUBM":
+                NBindex = IndexInMemory.loadNBIndex("N1B1");
                 break;
-            case 2:
+            case "uniprot":
                 NBindex = IndexInMemory.loadNBIndex("N1B2Hop");
-                break;*/
+                break;
             default:
                 NBindex = IndexInMemory.loadNBIndex("N1B1");//("N3B");
                 break;
