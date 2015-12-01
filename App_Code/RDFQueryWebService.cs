@@ -19,7 +19,8 @@ public class RDFQueryWebService : System.Web.Services.WebService
 {
     public static readonly string SUBJECT = "Subject";
     public static readonly string OBJECT = "Object";
-    public static readonly string PREDICATE = "Predict";
+    //WAS Predict
+    public static readonly string PREDICATE = "Predicate";
 
     public RDFQueryWebService()
     {
@@ -29,16 +30,17 @@ public class RDFQueryWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GetSubjects(string databaseName, string tableName)
+    public string GetSubjects(string databaseName, string currentInput)
     {
-        if (tableName.Contains("]"))
-        {
-            return "ERROR: Invalid table name.";
-        }else if (databaseName.Contains("]"))
+        if (databaseName.Contains("]"))
         {
             return "ERROR: Invalid database name.";
         }
-
+        if (currentInput.Contains("]"))
+        {
+            return "ERROR: Invalid database name.";
+        }
+        string tableName = "RDF";
         try {
             SqlConnection myConnection = new SqlConnection("server=.\\SQLEXPRESS;" +
                                            "Trusted_Connection=yes;" +
@@ -46,13 +48,23 @@ public class RDFQueryWebService : System.Web.Services.WebService
                                            "connection timeout=30;" +
                                            "Integrated Security = SSPI;");
             myConnection.Open();
-            SqlCommand c = new SqlCommand("SELECT DISTINCT s.* FROM ((SELECT ["+SUBJECT+"] FROM ["+databaseName+"].[dbo].["+tableName+ "]) UNION (SELECT ["+OBJECT+"] FROM [" + databaseName + "].[dbo].[" + tableName + "])) s", myConnection);
+            SqlCommand c = new SqlCommand("SELECT DISTINCT TOP 20 s.* FROM ("+
+                "(SELECT ["+SUBJECT+"] FROM ["+databaseName+"].[dbo].["+tableName+ "] WHERE [" + SUBJECT + "] LIKE '%"+currentInput+"%' ) UNION "+
+                " (SELECT [" + OBJECT+"] FROM [" + databaseName + "].[dbo].[" + tableName + "] WHERE [" + OBJECT + "] LIKE '%" + currentInput + "%')) s", myConnection);
             SqlDataReader reader = c.ExecuteReader();
             StringBuilder results = new StringBuilder();
+            results.Append("{ \"subjects\":[");
+            Boolean isFirst = true;
             while (reader.Read())
             {
-                results.Append(reader[0].ToString()+" ");
+                if (!isFirst)
+                {
+                    results.Append(",");
+                }
+                results.Append("\""+ reader[0].ToString()+"\"");
+                isFirst = false;
             }
+            results.Append("]}");
             return results.ToString();
         }catch(Exception e)
         {
@@ -61,17 +73,14 @@ public class RDFQueryWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public string GetEdges(string databaseName, string tableName)
+    public string GetEdges(string databaseName)
     {
-        if (tableName.Contains("]"))
-        {
-            return "ERROR: Invalid table name.";
-        }
-        else if (databaseName.Contains("]"))
+        if (databaseName.Contains("]"))
         {
             return "ERROR: Invalid database name.";
         }
 
+        string tableName = "RDF";
         try
         {
             SqlConnection myConnection = new SqlConnection("server=.\\SQLEXPRESS;" +
@@ -81,11 +90,18 @@ public class RDFQueryWebService : System.Web.Services.WebService
             myConnection.Open();
             SqlCommand c = new SqlCommand("SELECT DISTINCT ["+PREDICATE+"] FROM [" + databaseName + "].[dbo].[" + tableName + "]", myConnection);
             SqlDataReader reader = c.ExecuteReader();
-            StringBuilder results = new StringBuilder();
+            StringBuilder results = new StringBuilder("[");
+            Boolean isFirst = true;
             while (reader.Read())
             {
-                results.Append(reader[0].ToString() + " ");
+                if (!isFirst)
+                {
+                    results.Append(",");
+                }
+                results.Append("\""+reader[0].ToString() + "\"");
+                isFirst = false;
             }
+            results.Append("]");
             return results.ToString();
         }
         catch (Exception e)
