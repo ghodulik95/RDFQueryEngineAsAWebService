@@ -214,12 +214,12 @@ public class RDFQueryWebService : System.Web.Services.WebService
             dynamic query = JsonConvert.DeserializeObject(queryAsJSON);
             foreach (dynamic node in query.nodes)
             {
-                vertexLabel.Add((int)node.id, (string)node.label);
+                vertexLabel.Add((int)node.id, (string)node.text);
             }
 
             foreach (dynamic edge in query.edges)
             {
-                edgeLabel.Add(new GBE.Core.EdgeID((int)edge.source, (int)edge.target, (string)edge.label));
+                edgeLabel.Add(new GBE.Core.EdgeID((int)edge.source, (int)edge.target, (string)edge.text));
             }
         } catch (JsonSerializationException e)
         {
