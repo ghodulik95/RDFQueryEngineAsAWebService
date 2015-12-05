@@ -235,6 +235,9 @@ public class RDFQueryWebService : System.Web.Services.WebService
 
     private string resultsToJSON(List<Dictionary<int, string>> res)
     {
+        if(res == null){
+            return "{ \"results\":[] }";
+        }
         var toReturn = new StringBuilder("{ \"results\":[");
         Boolean isFirstResult = true;
         foreach (var r in res)
@@ -268,6 +271,7 @@ public class RDFQueryWebService : System.Web.Services.WebService
     //The following two functions are written by Shi Qiao on loading the database to memory and run the query.
     private List<Dictionary<int, string>> RunQuery(Dictionary<int, string> vertexLabel, List<GBE.Core.EdgeID> edgeLabel, string dbname)
     {
+        try{
         //run query function.
         loadDatabase(dbname);
         DataTable queryGraph = new DataTable();
@@ -308,6 +312,9 @@ public class RDFQueryWebService : System.Web.Services.WebService
             resultsString.Add(resultStringTemp);
         }
         return resultsString;
+        }catch(Exception e){
+            return null;
+        }
     }
 
 
