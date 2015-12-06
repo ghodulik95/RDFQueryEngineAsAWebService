@@ -72,6 +72,7 @@ public class RDFQueryWebService : System.Web.Services.WebService
         }
     }
 
+    //Not fully supported yet
     [WebMethod]
     public string GetEdges(string databaseName)
     {
@@ -109,21 +110,6 @@ public class RDFQueryWebService : System.Web.Services.WebService
             return e.ToString();
         }
     }
-
-    [WebMethod]
-    public string Hello(string names)
-    {
-        //List<Dictionary<int, string>> res = GUI.MainForm.RunQuery(Dictionary<int, string> vertexLabel, List<Core.EdgeID> edgeLabel)
-        Dictionary <string, string[]> ns = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(names);
-        var greetings = new Dictionary<string, List<string>>();
-        greetings.Add("lines", new List<string>());
-        foreach (string n in ns["names"])
-        {
-            greetings["lines"].Add("Hello " + n);
-        }
-        return JsonConvert.SerializeObject(greetings);
-    }
-
 
     //The following two functions are written by Shi Qiao on loading the database to memory and run the query.
     /*
@@ -205,7 +191,7 @@ public class RDFQueryWebService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    //{ nodes: [{ id: 0, label: '<http://www.Department2.University1.edu/GraduateStudent*' },{ id: 1, label: '<http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent>' }], edges: [{ source: 0, target: 1, label: 'edge0' }] }
+    //Input format: { nodes: [{ id: 0, label: '<http://www.Department2.University1.edu/GraduateStudent*' },{ id: 1, label: '<http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#GraduateStudent>' }], edges: [{ source: 0, target: 1, label: 'edge0' }] }
     public string callRunQuery(string queryAsJSON, string dbname)
     {
         Dictionary<int, string> vertexLabel = new Dictionary<int, string>();
